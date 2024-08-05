@@ -1,0 +1,13 @@
+{
+  "name": "reekwire",
+  "version": "1.0.0",
+  "description": "Allows you to 'require' local packages as if they were global. r('one') instead of r('c:\\\\dev\\\\appPath\\\\one\\\\')",
+  "main": "reekwire.js",
+  "scripts": {},
+  "keywords": [
+    "require",
+    "devDependencies"
+  ],
+  "author": "Richard J. Glanvill <thedecimalspace@gmail.com> (thedecimal.space)",
+  "license": "ISC"
+}
