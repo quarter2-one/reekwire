@@ -1,19 +1,8 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --watch",
-    "testspec": "mocha ./test/test_reekwire.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "titleize": "^4.0.0"
+    "voca": "^1.4.1"
   },
   "devDependencies": {
-    "mocha": "^10.7.0"
+    "taste-test": "^0.1.1"
   }
 }

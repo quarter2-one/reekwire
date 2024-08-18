@@ -1,16 +1,23 @@
 {
   "name": "reekwire",
-  "version": "0.0.1",
-  "description": "Allows you to 'require' local packages as if they were global. r('one') instead of r('c:\\\\dev\\\\appPath\\\\one\\\\')",
+  "version": "0.1.1",
+  "description": "Import maps for CommonJS packages. Set development and production paths of all dependencies in one place.",
   "main": "reekwire.js",
   "scripts": {
     "push": "git push -u origin main",
-    "pushcommit": "git add . && git commit && git push -u origin main"
+    "pushcommit": "git add . && git commit && git push -u origin main",
+    "prod": "set NODE_ENV=production&& nodemon test/test.js",
+    "dev": "set NODE_ENV=development&& nodemon test/test.js",
+    "test:prod": "set NODE_ENV=production&& node test/test.js",
+    "test:dev": "set NODE_ENV=development&& node test/test.js"
   },
   "keywords": [
     "require",
-    "devDependencies"
+    "devDependencies",
+    "Import maps",
+    "commonJS",
+    "package management"
   ],
-  "author": "Richard J. Glanvill <thedecimalspace@gmail.com> (thedecimal.space)",
+  "author": "Richard J. Glanvill <quarter2-one@yahoo.com> (quarter2.one)",
   "license": "ISC"
 }

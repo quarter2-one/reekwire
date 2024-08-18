@@ -1,25 +1,33 @@
+module.exports = reekwire;
+
 var path = require("path");
-var fs = require("fs");
 
-function reekWire(requireFn, prodPath, devPath) {
+/**
+ *
+ * @param {string} prodPath
+ * @param {string} devPath
+ * @returns
+ */
+function reekwire(prodPath, devPath) {
   var env = process.env.NODE_ENV || "development";
-
-  var pth = env === "development" ? devPath : prodPath;
-  return function () {
-    return requireFn(pth);
-  };
+  var pth = env.trim() === "development" ? getDevPath(devPath) : prodPath;
+  return require.main.require(pth);
 }
+reekwire.index = index;
 
-function index(requireFn, config) {
-  var exp = {};
-  for (var prodPath in config) {
-    exp[prodPath] = reekWire(requireFn, prodPath, config[prodPath]); // config[prodPath] = development path
+function index(configA) {
+  var exp = {},
+    l = configA.length;
+  while (l--) {
+    exp[configA[l][0]] = (function (i) {
+      return function () {
+        return reekwire(configA[i][1], configA[i][2]);
+      };
+    })(l);
   }
   return exp;
 }
 
-module.exports = {
-  reekWire: reekWire,
-  index: index,
-  indexReekwire: index,
-};
+function getDevPath(devPath) {
+  return devPath[0] === "." ? path.normalize(path.dirname(require.main.filename) + "/" + devPath) : devPath;
+}
