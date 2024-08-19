@@ -9,6 +9,7 @@ var path = require("path");
  * @returns
  */
 function reekwire(prodPath, devPath) {
+  devPath = devPath || prodPath;
   var env = process.env.NODE_ENV || "development";
   var pth = env.trim() === "development" ? getDevPath(devPath) : prodPath;
   return require.main.require(pth);

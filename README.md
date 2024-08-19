@@ -23,11 +23,16 @@ Import/require single package directly:
 Or create index of all imports.
 
 ```
+    //imports.json
+    [
+        [pack1, prodPath, devPath],
+        [pack2, prodPath, devPath]
+    ]
+
     //index.js
-    module.exports = reekwire.index([
-        [convenientName, prodPath, devPath],
-        [name, prodPath, devPath]
-    ]);
+     var reekwire = require('reekwire');
+    var imports = require('./imports.json');
+    module.exports = reekwire.index(imports);
 
 
     //app.js
@@ -49,22 +54,24 @@ slug("once upon a time") // "once-upon-a-time"
 #### Index
 
 ```
-/*
-An array of tupples representing imports.
-    ["name", "production path", "development path"]
-*/
-var imports = [
+ //imports.json
+[
   ["slugify", "voca/slugify", "./slugify.js"],
   ["taste", "taste-test", "./taste-test.js"],
-];
+]
 
-var rk = require("../reekwire");
-var r = rk.index(imports);
+//index.js
+    var reekwire = require('reekwire');
+    var imports = require('./imports.json');
+    module.exports = reekwire.index(imports);
 
-var slug = r.slugify();
+//app.js
+var rk = require('./index');
+var slug = rk.slugify();
+var tasteTest = rk.taste();
+
 slug("once upon a time") // "once-upon-a-time"
 
-var tasteTest = r.taste();
 var taste = new tasteTest.Test();
 taste.describe // function
 ```
